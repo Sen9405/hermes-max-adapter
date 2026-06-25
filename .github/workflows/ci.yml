@@ -1,0 +1,29 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install flake8
+      - name: Lint with flake8
+        run: |
+          flake8 hermes_plugin_max/ --count --select=E9,F63,F7,F82 --show-source --statistics
+          flake8 hermes_plugin_max/ --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
+      - name: Check syntax
+        run: |
+          python -m py_compile hermes_plugin_max/adapter.py
+          python -m py_compile hermes_plugin_max/__init__.py
