@@ -691,8 +691,8 @@ class MAXAdapter(BasePlatformAdapter):
         token = upload_result.get("token")
         if not file_id or not token:
             logger.error(
-                "Upload response missing fileId or token: %s",
-                str(upload_result)[:200],
+                "Upload response missing fileId or token (fileId=%s, has_token=%s)",
+                bool(file_id), bool(token),
             )
             return None
 
@@ -840,7 +840,7 @@ class MAXAdapter(BasePlatformAdapter):
                             "uploads",
                         )
                         os.makedirs(save_dir, exist_ok=True)
-                        dest = os.path.join(save_dir, filename)
+                        dest = os.path.join(save_dir, os.path.basename(filename))
                         ssl_ctx = _create_ssl_context()
                         connector = aiohttp.TCPConnector(ssl=ssl_ctx)
                         async with aiohttp.ClientSession(
