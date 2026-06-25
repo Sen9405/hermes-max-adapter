@@ -1,0 +1,37 @@
+name: max-platform
+label: MAX
+kind: platform
+version: 1.0.0
+description: >
+  MAX (max.ru) gateway adapter for Hermes Agent.
+  Connects to the MAX Bot API (platform-api2.max.ru) and relays messages
+  between MAX chats and the Hermes agent. Uses webhooks for production
+  and long polling as fallback. Requires a verified org/IP/self-employed
+  profile on the MAX platform and a bot token.
+author: Hermes Agent
+requires_env:
+  - name: MAX_TOKEN
+    description: "Bot token from MAX -> Чат-боты -> Расширенные настройки"
+    prompt: "MAX bot token"
+    password: true
+optional_env:
+  - name: MAX_WEBHOOK_URL
+    description: "Public HTTPS URL for webhook (required for production). If not set, uses long polling."
+    prompt: "Webhook URL (HTTPS)"
+    password: false
+  - name: MAX_POLL_INTERVAL
+    description: "Long polling interval in seconds (default: 5)"
+    prompt: "Poll interval (seconds)"
+    password: false
+  - name: MAX_ALLOWED_USERS
+    description: "Comma-separated MAX user IDs allowed to talk to the bot"
+    prompt: "Allowed user IDs (comma-separated)"
+    password: false
+  - name: MAX_ALLOW_ALL_USERS
+    description: "Allow anyone to talk to the bot (dev only)"
+    prompt: "Allow all users? (true/false)"
+    password: false
+  - name: MAX_HOME_CHANNEL
+    description: "Chat ID for cron / notification delivery"
+    prompt: "Home channel chat ID"
+    password: false
