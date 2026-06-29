@@ -9,6 +9,10 @@ __pycache__/
 .env.local
 ca-bundle.pem
 
+# Cache
+.pytest_cache/
+.ruff_cache/
+
 # OS
 .DS_Store
 Thumbs.db
