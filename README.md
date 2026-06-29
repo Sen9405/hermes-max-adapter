@@ -1,6 +1,7 @@
 # Hermes MAX Messenger Adapter
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![CI](https://github.com/Sen9405/hermes-max-adapter/actions/workflows/ci.yml/badge.svg)](https://github.com/Sen9405/hermes-max-adapter/actions/workflows/ci.yml)
 
 A gateway platform adapter for [Hermes Agent](https://hermes-agent.nousresearch.com) that connects to the **MAX (max.ru)** Bot API.
 
